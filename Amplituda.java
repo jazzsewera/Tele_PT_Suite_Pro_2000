@@ -11,7 +11,7 @@ package dodatki;
 /**
  * <blockquote>Labores pariunt honores</blockquote>
  * @author Błażej Sewera (Jazz)
- * @version 0.3 (2016-04-09)
+ * @version 0.3.1 (2016-04-09)
  */
 public class Amplituda {
 	
@@ -396,7 +396,7 @@ public class Amplituda {
 		
 		double przedzialKwantyzacji = maxAmplituda / 2047;
 		
-		while (wartoscCyfrowejKwantyzacji * przedzialKwantyzacji < amplitudaAbs) wartoscCyfrowejKwantyzacji++;
+		while (wartoscCyfrowejKwantyzacji * przedzialKwantyzacji <= amplitudaAbs) wartoscCyfrowejKwantyzacji++;
 		String bin12 = Integer.toBinaryString(wartoscCyfrowejKwantyzacji);
 		if (bin12.length() < 11) {
 			if (czyDodatniaAmplituda())
