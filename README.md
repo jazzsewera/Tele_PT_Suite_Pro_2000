@@ -1,3 +1,10 @@
 # Tele_PT_Suite_Pro_2000
-It'll be a java application which helps in our Transmission Theory Classes.
-[PL] To będzie aplikacja do pomocy w zajęciach z PT.
+Branch where we work.  
+Please put your version (if you want, of course) in this branch blindly!
+
+
+
+Dział, gdzie pracujemy.  
+Proszę wrzucać (jak ktoś będzie chciał) swoje wersje bez żadnych oporów!  
+Pozdrawiam,  
+Błażej Sewera
