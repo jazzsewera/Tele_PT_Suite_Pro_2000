@@ -23,7 +23,7 @@ public class Amplituda {
 	 * <h2>Segmenty13Segmentowa (enum)</h2>
 	 * <b>Pole wyliczeniowe dla kompresji 13 segmentowej</b> <br>
 	 * Wartości: (przy największej amplitudzie) Segment1, do (przy najmniejszej) Segment8. <br>
-	 * Jest jeszcze dodana wartość PeakOrOvershoot, gdy amplituda jest >= maxAmplituda.
+	 * Jest jeszcze dodana wartość Overshoot, gdy amplituda jest > maxAmplituda.
 	 * 
 	 */
 	private static enum Segmenty13Segmentowa {
@@ -35,14 +35,14 @@ public class Amplituda {
 		Segment6,
 		Segment7,
 		Segment8,
-		PeakOrOvershoot,
+		Overshoot,
 	}
 	
 	/**
 	 * <h2>SegmentyCyfrowa (enum)</h2>
 	 * <b>Pole wyliczeniowe dla kompresji cyfrowej</b>
 	 * Wartości: (przy największej amplitudzie) Segment7, do (przy najmniejszej) Segment1a. <br>
-	 * Jest jeszcze dodana wartość PeakOrOvershoot, gdy amplituda jest >= maxAmplituda.
+	 * Jest jeszcze dodana wartość Overshoot, gdy amplituda jest > maxAmplituda.
 	 * 
 	 */
 	private static enum SegmentyCyfrowa {
@@ -54,7 +54,7 @@ public class Amplituda {
 		Segment5,
 		Segment6,
 		Segment7,
-		PeakOrOvershoot,
+		Overshoot,
 	}
 	// Koniec pól wyliczeniowych;
 	
@@ -225,15 +225,15 @@ public class Amplituda {
 	 */
 	public Segmenty13Segmentowa segmentowaPrzypiszSegment() {
 		
-		if (amplitudaAbs >= maxAmplituda/2 && amplitudaAbs < maxAmplituda) return Segmenty13Segmentowa.Segment1;
-		else if (amplitudaAbs >= maxAmplituda/4 && amplitudaAbs < maxAmplituda/2) return Segmenty13Segmentowa.Segment2;
-		else if (amplitudaAbs >= maxAmplituda/8 && amplitudaAbs < maxAmplituda/4) return Segmenty13Segmentowa.Segment3;
-		else if (amplitudaAbs >= maxAmplituda/16 && amplitudaAbs < maxAmplituda/8) return Segmenty13Segmentowa.Segment4;
-		else if (amplitudaAbs >= maxAmplituda/32 && amplitudaAbs < maxAmplituda/16) return Segmenty13Segmentowa.Segment5;
-		else if (amplitudaAbs >= maxAmplituda/64 && amplitudaAbs < maxAmplituda/32) return Segmenty13Segmentowa.Segment6;
-		else if (amplitudaAbs >= maxAmplituda/128 && amplitudaAbs < maxAmplituda/64) return Segmenty13Segmentowa.Segment7;
-		else if (amplitudaAbs >= 0 && amplitudaAbs < maxAmplituda/128) return Segmenty13Segmentowa.Segment8;
-		else return Segmenty13Segmentowa.PeakOrOvershoot;
+		if (amplitudaAbs > maxAmplituda/2 && amplitudaAbs <= maxAmplituda) return Segmenty13Segmentowa.Segment1;
+		else if (amplitudaAbs > maxAmplituda/4 && amplitudaAbs <= maxAmplituda/2) return Segmenty13Segmentowa.Segment2;
+		else if (amplitudaAbs > maxAmplituda/8 && amplitudaAbs <= maxAmplituda/4) return Segmenty13Segmentowa.Segment3;
+		else if (amplitudaAbs > maxAmplituda/16 && amplitudaAbs <= maxAmplituda/8) return Segmenty13Segmentowa.Segment4;
+		else if (amplitudaAbs > maxAmplituda/32 && amplitudaAbs <= maxAmplituda/16) return Segmenty13Segmentowa.Segment5;
+		else if (amplitudaAbs > maxAmplituda/64 && amplitudaAbs <= maxAmplituda/32) return Segmenty13Segmentowa.Segment6;
+		else if (amplitudaAbs > maxAmplituda/128 && amplitudaAbs <= maxAmplituda/64) return Segmenty13Segmentowa.Segment7;
+		else if (amplitudaAbs >= 0 && amplitudaAbs <= maxAmplituda/128) return Segmenty13Segmentowa.Segment8;
+		else return Segmenty13Segmentowa.Overshoot;
 
 	}
 	
@@ -247,8 +247,8 @@ public class Amplituda {
 	public String segmentowaPrzypiszSegmentBinarnie() {
 		String bin;
 		bin = Integer.toBinaryString(7 - segmentowaPrzypiszSegment().ordinal());
-		if (segmentowaPrzypiszSegment() == Segmenty13Segmentowa.PeakOrOvershoot)
-			return " Peak Or Overshoot ";
+		if (segmentowaPrzypiszSegment() == Segmenty13Segmentowa.Overshoot)
+			return " Overshoot ";
 		else {
 			if (bin.length() == 1)
 				return "00" + bin;
@@ -278,7 +278,7 @@ public class Amplituda {
 			case 1:
 				amplitudaWzgl = amplitudaAbs-(maxAmplituda/2);
 				przedzialKwantyzacji = (maxAmplituda/2) / 16;
-				while (amplitudaWzglKwantyzacji <= amplitudaWzgl) {
+				while (amplitudaWzglKwantyzacji < amplitudaWzgl) {
 					amplitudaWzglKwantyzacji += przedzialKwantyzacji;
 					wartoscKwantyzacji++;
 				}
@@ -286,7 +286,7 @@ public class Amplituda {
 			case 2: {
 				amplitudaWzgl = amplitudaAbs-(maxAmplituda/4);
 				przedzialKwantyzacji = (maxAmplituda/4) / 16;
-				while (amplitudaWzglKwantyzacji <= amplitudaWzgl) {
+				while (amplitudaWzglKwantyzacji < amplitudaWzgl) {
 					amplitudaWzglKwantyzacji += przedzialKwantyzacji;
 					wartoscKwantyzacji++;
 				}
@@ -295,7 +295,7 @@ public class Amplituda {
 			case 3: {
 				amplitudaWzgl = amplitudaAbs-(maxAmplituda/8);
 				przedzialKwantyzacji = (maxAmplituda/8) / 16;
-				while (amplitudaWzglKwantyzacji <= amplitudaWzgl) {
+				while (amplitudaWzglKwantyzacji < amplitudaWzgl) {
 					amplitudaWzglKwantyzacji += przedzialKwantyzacji;
 					wartoscKwantyzacji++;
 				}
@@ -304,7 +304,7 @@ public class Amplituda {
 			case 4: {
 				amplitudaWzgl = amplitudaAbs-(maxAmplituda/16);
 				przedzialKwantyzacji = (maxAmplituda/16) / 16;
-				while (amplitudaWzglKwantyzacji <= amplitudaWzgl) {
+				while (amplitudaWzglKwantyzacji < amplitudaWzgl) {
 					amplitudaWzglKwantyzacji += przedzialKwantyzacji;
 					wartoscKwantyzacji++;
 				}
@@ -313,7 +313,7 @@ public class Amplituda {
 			case 5: {
 				amplitudaWzgl = amplitudaAbs-(maxAmplituda/32);
 				przedzialKwantyzacji = (maxAmplituda/32) / 16;
-				while (amplitudaWzglKwantyzacji <= amplitudaWzgl) {
+				while (amplitudaWzglKwantyzacji < amplitudaWzgl) {
 					amplitudaWzglKwantyzacji += przedzialKwantyzacji;
 					wartoscKwantyzacji++;
 				}
@@ -322,7 +322,7 @@ public class Amplituda {
 			case 6: {
 				amplitudaWzgl = amplitudaAbs-(maxAmplituda/64);
 				przedzialKwantyzacji = (maxAmplituda/64) / 16;
-				while (amplitudaWzglKwantyzacji <= amplitudaWzgl) {
+				while (amplitudaWzglKwantyzacji < amplitudaWzgl) {
 					amplitudaWzglKwantyzacji += przedzialKwantyzacji;
 					wartoscKwantyzacji++;
 				}
@@ -331,7 +331,7 @@ public class Amplituda {
 			case 7: {
 				amplitudaWzgl = amplitudaAbs-(maxAmplituda/128);
 				przedzialKwantyzacji = (maxAmplituda/128) / 16;
-				while (amplitudaWzglKwantyzacji <= amplitudaWzgl) {
+				while (amplitudaWzglKwantyzacji < amplitudaWzgl) {
 					amplitudaWzglKwantyzacji += przedzialKwantyzacji;
 					wartoscKwantyzacji++;
 				}
@@ -339,14 +339,14 @@ public class Amplituda {
 			}
 			case 8: {;
 				przedzialKwantyzacji = (maxAmplituda/128) / 16;
-				while (amplitudaWzglKwantyzacji <= amplitudaAbs) {
+				while (amplitudaWzglKwantyzacji < amplitudaAbs) {
 					amplitudaWzglKwantyzacji += przedzialKwantyzacji;
 					wartoscKwantyzacji++;
 				}
 				break;
 			}
 			default:
-				return " Peak Or Overshoot ";
+				return " Overshoot ";
 		}
 		if (Integer.toBinaryString(wartoscKwantyzacji-1).length() == 3)
 			return "0"+Integer.toBinaryString(wartoscKwantyzacji-1);
@@ -411,7 +411,7 @@ public class Amplituda {
 				return "0" + bin12;
 		}
 		else
-			return "Peak Or Overshoot";
+			return "Overshoot";
 		
 	}
 	
