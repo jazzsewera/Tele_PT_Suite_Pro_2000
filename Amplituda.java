@@ -11,7 +11,7 @@ package dodatki;
 /**
  * <blockquote>Labores pariunt honores</blockquote>
  * @author Błażej Sewera (Jazz)
- * @version 0.3.1 (2016-04-09)
+ * @version 0.3.3 (2016-04-11)
  */
 public class Amplituda {
 	
