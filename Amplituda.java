@@ -11,7 +11,7 @@ package dodatki;
 /**
  * <blockquote>Labores pariunt honores</blockquote>
  * @author Błażej Sewera (Jazz)
- * @version 0.3.4.1 Alpha (2016-04-12)
+ * @version 0.3.5 (2016-04-13)
  */
 public class Amplituda {
 	
@@ -198,6 +198,14 @@ public class Amplituda {
 	public double getAmplitudaAbs() {
 		return amplitudaAbs;
 	}
+	
+	/**
+	 * Akcesor pola wartoscCyfrowejKwantyzacji z klasy Amplituda.
+	 * @return wartoscCyfrowejKwantyzacji (dodatki.Amplituda.wartoscCyfrowejKwantyzacji)
+	 */
+	public int getWartoscCyfrowejKwantyzacji() {
+		return wartoscCyfrowejKwantyzacji;
+	}
 	// Koniec akcesorów;
 	
 	// =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
@@ -244,7 +252,7 @@ public class Amplituda {
 	 * <code>ampl.segmentowaPrzypiszSegmentBinarnie();</code>
 	 * @return String "***", gdzie * oznacza 0 lub 1
 	 */
-	public String segmentowaPrzypiszSegmentBinarnie() { // TOCHECK
+	public String segmentowaPrzypiszSegmentBinarnie() {
 		if (segmentowaPrzypiszSegment() == Segmenty13Segmentowa.Overshoot) return " Overshoot ";
 		String bin;
 		bin = Integer.toBinaryString(7 - segmentowaPrzypiszSegment().ordinal());
@@ -419,7 +427,7 @@ public class Amplituda {
 	 * <code>ampl.cyfrowaPrzypiszSegment();</code>
 	 * @return element z enum SegmentyCyfrowa
 	 */
-	public SegmentyCyfrowa cyfrowaPrzypiszSegment() { // TOCHECK
+	public SegmentyCyfrowa cyfrowaPrzypiszSegment() {
 		if (wartoscCyfrowejKwantyzacji > 1024 && wartoscCyfrowejKwantyzacji <= 2048) return SegmentyCyfrowa.Segment7;
 		else if (wartoscCyfrowejKwantyzacji > 512 && wartoscCyfrowejKwantyzacji <= 1024) return SegmentyCyfrowa.Segment6;
 		else if (wartoscCyfrowejKwantyzacji > 256 && wartoscCyfrowejKwantyzacji <= 512) return SegmentyCyfrowa.Segment5;
@@ -438,10 +446,10 @@ public class Amplituda {
 	 * <code>ampl.cyfrowaPrzypiszSegmentBinarnie();</code>
 	 * @return String "***" gdzie * oznacza 0 lub 1
 	 */
-	public String cyfrowaPrzypiszSegmentBinarnie() { // TOCHECK
+	public String cyfrowaPrzypiszSegmentBinarnie() {
 		if (cyfrowaPrzypiszSegment() == SegmentyCyfrowa.Overshoot) return " Overshoot ";
 		String bin;
-		bin = Integer.toBinaryString(segmentowaPrzypiszSegment().ordinal());
+		bin = Integer.toBinaryString(cyfrowaPrzypiszSegment().ordinal());
 			if (bin.length() == 1)
 				return "00" + bin;
 			if (bin.length() == 2)
