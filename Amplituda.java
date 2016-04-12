@@ -11,7 +11,7 @@ package dodatki;
 /**
  * <blockquote>Labores pariunt honores</blockquote>
  * @author Błażej Sewera (Jazz)
- * @version 0.3.4 (2016-04-12)
+ * @version 0.3.4.1 Alpha (2016-04-12)
  */
 public class Amplituda {
 	
@@ -244,19 +244,16 @@ public class Amplituda {
 	 * <code>ampl.segmentowaPrzypiszSegmentBinarnie();</code>
 	 * @return String "***", gdzie * oznacza 0 lub 1
 	 */
-	public String segmentowaPrzypiszSegmentBinarnie() {
+	public String segmentowaPrzypiszSegmentBinarnie() { // TOCHECK
+		if (segmentowaPrzypiszSegment() == Segmenty13Segmentowa.Overshoot) return " Overshoot ";
 		String bin;
 		bin = Integer.toBinaryString(7 - segmentowaPrzypiszSegment().ordinal());
-		if (segmentowaPrzypiszSegment() == Segmenty13Segmentowa.Overshoot)
-			return " Overshoot ";
-		else {
 			if (bin.length() == 1)
 				return "00" + bin;
 			if (bin.length() == 2)
 				return "0" + bin;
 			else
 				return bin;
-		}
 	}
 	
 	
@@ -422,8 +419,16 @@ public class Amplituda {
 	 * <code>ampl.cyfrowaPrzypiszSegment();</code>
 	 * @return element z enum SegmentyCyfrowa
 	 */
-	public SegmentyCyfrowa cyfrowaPrzypiszSegment() { // TODO
-		return null;
+	public SegmentyCyfrowa cyfrowaPrzypiszSegment() { // TOCHECK
+		if (wartoscCyfrowejKwantyzacji > 1024 && wartoscCyfrowejKwantyzacji <= 2048) return SegmentyCyfrowa.Segment7;
+		else if (wartoscCyfrowejKwantyzacji > 512 && wartoscCyfrowejKwantyzacji <= 1024) return SegmentyCyfrowa.Segment6;
+		else if (wartoscCyfrowejKwantyzacji > 256 && wartoscCyfrowejKwantyzacji <= 512) return SegmentyCyfrowa.Segment5;
+		else if (wartoscCyfrowejKwantyzacji > 128 && wartoscCyfrowejKwantyzacji <= 256) return SegmentyCyfrowa.Segment4;
+		else if (wartoscCyfrowejKwantyzacji > 64 && wartoscCyfrowejKwantyzacji <= 128) return SegmentyCyfrowa.Segment3;
+		else if (wartoscCyfrowejKwantyzacji > 32 && wartoscCyfrowejKwantyzacji <= 64) return SegmentyCyfrowa.Segment2;
+		else if (wartoscCyfrowejKwantyzacji > 16 && wartoscCyfrowejKwantyzacji <= 32) return SegmentyCyfrowa.Segment1b;
+		else if (wartoscCyfrowejKwantyzacji >= 0 && wartoscCyfrowejKwantyzacji <= 16) return SegmentyCyfrowa.Segment1a;
+		else return SegmentyCyfrowa.Overshoot;
 	}
 	
 	
@@ -433,8 +438,16 @@ public class Amplituda {
 	 * <code>ampl.cyfrowaPrzypiszSegmentBinarnie();</code>
 	 * @return String "***" gdzie * oznacza 0 lub 1
 	 */
-	public String cyfrowaPrzypiszSegmentBinarnie() { // TODO
-		return null;
+	public String cyfrowaPrzypiszSegmentBinarnie() { // TOCHECK
+		if (cyfrowaPrzypiszSegment() == SegmentyCyfrowa.Overshoot) return " Overshoot ";
+		String bin;
+		bin = Integer.toBinaryString(segmentowaPrzypiszSegment().ordinal());
+			if (bin.length() == 1)
+				return "00" + bin;
+			if (bin.length() == 2)
+				return "0" + bin;
+			else
+				return bin;
 	}
 	
 	
