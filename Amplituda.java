@@ -11,7 +11,7 @@ package dodatki;
 /**
  * <blockquote>Labores pariunt honores</blockquote>
  * @author Błażej Sewera (Jazz)
- * @version 0.3.5 (2016-04-13)
+ * @version 0.3.5.1 Alpha (2016-04-14)
  */
 public class Amplituda {
 	
@@ -462,11 +462,42 @@ public class Amplituda {
 	/**
 	 * Metoda zwracająca String z oznaczeniem, które bity są brane pod uwagę przy kompresji do 8 bitów.<br>
 	 * <b>Użycie:</b>
-	 * <code>ampl.cyfrowaPodajWXYZ();</code>
-	 * @return String o długości 12, np. "S001WXYZ****"
+	 * <code>ampl.cyfrowaPodajWXYZ(8);</code>
+	 * lub <br>
+	 * <code>ampl.cyfrowaPodajWXYZ(12);</code>
+	 * @return String o długości 12, np. "S001WXYZ****" lub 8, np. "S001WXYZ"
 	 */
-	public String cyfrowaPodajWXYZ() { // TODO
-		return null;
+	public String cyfrowaPodajWXYZ(short b) { // TOCHECK: Potrzeba break?
+		if (b == 8)
+			return "S" + cyfrowaPrzypiszSegmentBinarnie() + "WXYZ";
+		else {
+			switch (cyfrowaPrzypiszSegment()) {
+				case 0:
+					return "S0000000WXYZ";
+					break;
+				case 1:
+					return "S0000001WXYZ";
+					break;
+				case 2:
+					return "S000001WXYZ*";
+					break;
+				case 3:
+					return "S00001WXYZ**";
+					break;
+				case 4:
+					return "S0001WXYZ***";
+					break;
+				case 5:
+					return "S001WXYZ****";
+					break;
+				case 6:
+					return "S01WXYZ*****";
+					break;
+				case 7:
+					return "S1WXYZ******";
+					break;
+			}
+		}
 	}
 	
 	
@@ -477,8 +508,10 @@ public class Amplituda {
 	 * <code>ampl.cyfrowaGenerujPozostale4Bity();</code>
 	 * @return String "****" gdzie * oznacza 0 lub 1
 	 */
-	public String cyfrowaGenerujPozostale4Bity() { // TODO
-		return null;
+	public String cyfrowaGenerujPozostale4Bity() { // TOCHECK, TODO
+		char[] bitArray = cyfrowaGeneruj12Bitowy().toCharArray();
+		String str = "";
+		
 	}
 	
 	
