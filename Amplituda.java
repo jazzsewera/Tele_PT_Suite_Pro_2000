@@ -11,7 +11,7 @@ package dodatki;
 /**
  * <blockquote>Labores pariunt honores</blockquote>
  * @author Błażej Sewera (Jazz)
- * @version 0.3.5.1 Alpha (2016-04-14)
+ * @version 0.9 Beta (2016-04-15) - needs testing
  */
 public class Amplituda {
 	
@@ -467,36 +467,29 @@ public class Amplituda {
 	 * <code>ampl.cyfrowaPodajWXYZ(12);</code>
 	 * @return String o długości 12, np. "S001WXYZ****" lub 8, np. "S001WXYZ"
 	 */
-	public String cyfrowaPodajWXYZ(short b) { // TOCHECK: Potrzeba break?
+	public String cyfrowaPodajWXYZ(short b) {
 		if (b == 8)
 			return "S" + cyfrowaPrzypiszSegmentBinarnie() + "WXYZ";
 		else {
-			switch (cyfrowaPrzypiszSegment()) {
-				case 0:
-					return "S0000000WXYZ";
-					break;
-				case 1:
-					return "S0000001WXYZ";
-					break;
-				case 2:
-					return "S000001WXYZ*";
-					break;
-				case 3:
-					return "S00001WXYZ**";
-					break;
-				case 4:
-					return "S0001WXYZ***";
-					break;
-				case 5:
-					return "S001WXYZ****";
-					break;
-				case 6:
-					return "S01WXYZ*****";
-					break;
-				case 7:
-					return "S1WXYZ******";
-					break;
+			switch (cyfrowaPrzypiszSegment().ordinal()) {
+			case 0:
+				return "S0000000WXYZ";
+			case 1:
+				return "S0000001WXYZ";
+			case 2:
+				return "S000001WXYZ*";
+			case 3:
+				return "S00001WXYZ**";
+			case 4:
+				return "S0001WXYZ***";
+			case 5:
+				return "S001WXYZ****";
+			case 6:
+				return "S01WXYZ*****";
+			case 7:
+				return "S1WXYZ******";
 			}
+			return " Overshoot ";
 		}
 	}
 	
@@ -508,10 +501,29 @@ public class Amplituda {
 	 * <code>ampl.cyfrowaGenerujPozostale4Bity();</code>
 	 * @return String "****" gdzie * oznacza 0 lub 1
 	 */
-	public String cyfrowaGenerujPozostale4Bity() { // TOCHECK, TODO
+	public String cyfrowaGenerujPozostale4Bity() {
 		char[] bitArray = cyfrowaGeneruj12Bitowy().toCharArray();
-		String str = "";
-		
+		if (bitArray.length == 12) {
+			switch (cyfrowaPrzypiszSegment().ordinal()) {
+			case 0:
+				return String.valueOf(bitArray, 8, 4);
+			case 1:
+				return String.valueOf(bitArray, 8, 4);
+			case 2:
+				return String.valueOf(bitArray, 7, 4);
+			case 3:
+				return String.valueOf(bitArray, 6, 4);
+			case 4:
+				return String.valueOf(bitArray, 5, 4);
+			case 5:
+				return String.valueOf(bitArray, 4, 4);
+			case 6:
+				return String.valueOf(bitArray, 3, 4);
+			case 7:
+				return String.valueOf(bitArray, 2, 4);
+			}
+		}
+		return " Overshoot ";
 	}
 	
 	
@@ -529,8 +541,10 @@ public class Amplituda {
 	 * <b>Na samym końcu skleca się to wszystko w kupę przez metodę cyfrowaaWyswietlKod()</b>
 	 * 
 	 */
-	public String cyfrowaWyswietlKod() { // TODO
-		return null;
+	public String cyfrowaWyswietlKod() {
+		if (czyDodatniaAmplituda())
+			return "1" + cyfrowaPrzypiszSegmentBinarnie() + cyfrowaGenerujPozostale4Bity();
+		else return "0" + cyfrowaPrzypiszSegmentBinarnie() + cyfrowaGenerujPozostale4Bity();
 	}
 		// Koniec metod kompresji cyfrowej;
 	
