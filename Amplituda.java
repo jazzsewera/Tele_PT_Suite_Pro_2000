@@ -1,12 +1,22 @@
-/* * * * * * * * * * * * * * * * * * * * *
- * ##################################### *
- * ------------------------------------- *
- * ===== Created by Błażej Sewera ====== *
- * ------------------------------------- *
- * ##################################### *
- * * * * * * * * * * * * * * * * * * * * */
-
-package dodatki;
+//<editor-fold defaultstate="collapsed" desc="Copyright">
+/*
+* Copyright (C) 2016 jazz
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+//</editor-fold>
+package mainPackage;
 
 /**
  * <blockquote>Labores pariunt honores</blockquote>
@@ -26,16 +36,27 @@ public class Amplituda {
 	 * Jest jeszcze dodana wartość Overshoot, gdy amplituda jest > maxAmplituda.
 	 * 
 	 */
-	private static enum Segmenty13Segmentowa {
-		Segment1,
-		Segment2,
-		Segment3,
-		Segment4,
-		Segment5,
-		Segment6,
-		Segment7,
-		Segment8,
-		Overshoot,
+	static enum Segmenty13Segmentowa {
+		Segment1("Segment 1"),
+		Segment2("Segment 2"),
+		Segment3("Segment 3"),
+		Segment4("Segment 4"),
+		Segment5("Segment 5"),
+		Segment6("Segment 6"),
+		Segment7("Segment 7"),
+		Segment8("Segment 8"),
+		Overshoot("Overshoot");
+                
+                String s;
+                
+                Segmenty13Segmentowa(String s) {
+                        this.s = s;
+                }
+                
+                @Override
+                public String toString() {
+                        return s;
+                }
 	}
 	
 	/**
@@ -45,16 +66,27 @@ public class Amplituda {
 	 * Jest jeszcze dodana wartość Overshoot, gdy amplituda jest > maxAmplituda.
 	 * 
 	 */
-	private static enum SegmentyCyfrowa {
-		Segment1a,
-		Segment1b,
-		Segment2,
-		Segment3,
-		Segment4,
-		Segment5,
-		Segment6,
-		Segment7,
-		Overshoot,
+	static enum SegmentyCyfrowa {
+		Segment1a("Segment 1a"),
+		Segment1b("Segment 1b"),
+		Segment2("Segment 2"),
+		Segment3("Segment 3"),
+		Segment4("Segment 4"),
+		Segment5("Segment 5"),
+		Segment6("Segment 6"),
+		Segment7("Segment 7"),
+		Overshoot("Overshoot");
+                
+                String s;
+                
+                SegmentyCyfrowa(String s) {
+                        this.s = s;
+                }
+                
+                @Override
+                public String toString() {
+                        return s;
+                }
 	}
 	// Koniec pól wyliczeniowych;
 	
@@ -82,19 +114,31 @@ public class Amplituda {
 	 */
 	public Amplituda(double amplituda, double maxAmplituda, String jednostka, String maxJednostka) {
 		
-		if (jednostka == "V")
-			this.amplituda = amplituda;
-		else if (jednostka == "mV")
-			this.amplituda = amplituda / 1000;
-		else
-			this.amplituda = amplituda;
+		if (null != jednostka)
+			switch (jednostka) {
+                case "V":
+                    this.amplituda = amplituda;
+                    break;
+                case "mV":
+                    this.amplituda = amplituda / 1000;
+                    break;
+                default:
+                    this.amplituda = amplituda;
+                    break;
+            }
 		
-		if (maxJednostka == "V")
-			this.maxAmplituda = maxAmplituda;
-		else if (maxJednostka == "mV")
-			this.maxAmplituda = maxAmplituda / 1000;
-		else
-			this.maxAmplituda = maxAmplituda;
+		if (null != maxJednostka)
+			switch (maxJednostka) {
+                case "V":
+                    this.maxAmplituda = maxAmplituda;
+                    break;
+                case "mV":
+                    this.maxAmplituda = maxAmplituda / 1000;
+                    break;
+                default:
+                    this.maxAmplituda = maxAmplituda;
+                    break;
+            }
 		amplitudaAbs = Math.abs(amplituda);
 		// Konstruktor z czterema argumentami
 	}
@@ -109,6 +153,10 @@ public class Amplituda {
 		this(amplituda, maxAmplituda, "V", "V");
 		// Konstruktor z dwoma argumentami
 	}
+        
+        public Amplituda() {
+                this(0.0, 0.0);
+        }
 	// Koniec konstruktorów;
 	
 	// =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
@@ -124,12 +172,18 @@ public class Amplituda {
 	 * @param jednostka
 	 */
 	public void setAmplituda(double amplituda, String jednostka) {
-		if (jednostka == "V")
-			this.amplituda = amplituda;
-		else if (jednostka == "mV")
-			this.amplituda = amplituda / 1000;
-		else
-			this.amplituda = amplituda;
+		if (null != jednostka)
+			switch (jednostka) {
+                case "V":
+                    this.amplituda = amplituda;
+                    break;
+                case "mV":
+                    this.amplituda = amplituda / 1000;
+                    break;
+                default:
+                    this.amplituda = amplituda;
+                    break;
+            }
 		
 		amplitudaAbs = Math.abs(amplituda);
 	}
@@ -142,12 +196,18 @@ public class Amplituda {
 	 * @param maxJednostka
 	 */
 	public void setMaxAmplituda(double maxAmplituda, String maxJednostka) {
-		if (maxJednostka == "V")
-			this.maxAmplituda = maxAmplituda;
-		else if (maxJednostka == "mV")
-			this.maxAmplituda = maxAmplituda / 1000;
-		else
-			this.maxAmplituda = maxAmplituda;
+		if (null != maxJednostka)
+			switch (maxJednostka) {
+                case "V":
+                    this.maxAmplituda = maxAmplituda;
+                    break;
+                case "mV":
+                    this.maxAmplituda = maxAmplituda / 1000;
+                    break;
+                default:
+                    this.maxAmplituda = maxAmplituda;
+                    break;
+            }
 	}
 	
 	/**
@@ -219,8 +279,7 @@ public class Amplituda {
 	 * @return True, gdy amplituda jest >= 0 lub false, gdy jest < 0.
 	 */
 	public boolean czyDodatniaAmplituda() {
-		if (amplituda >= 0) return true;
-		else return false;
+            return amplituda >= 0;
 	}
 	
 		// Początek metod kompresji 13 segmentowej:
@@ -342,7 +401,7 @@ public class Amplituda {
 				}
 				break;
 			}
-			case 8: {;
+			case 8: {
 				przedzialKwantyzacji = (maxAmplituda/128) / 16;
 				while (amplitudaWzglKwantyzacji < amplitudaAbs) {
 					amplitudaWzglKwantyzacji += przedzialKwantyzacji;
@@ -353,14 +412,16 @@ public class Amplituda {
 			default:
 				return " Overshoot ";
 		}
-		if (Integer.toBinaryString(wartoscKwantyzacji-1).length() == 3)
-			return "0"+Integer.toBinaryString(wartoscKwantyzacji-1);
-		else if (Integer.toBinaryString(wartoscKwantyzacji-1).length() == 2)
-			return "00"+Integer.toBinaryString(wartoscKwantyzacji-1);
-		else if (Integer.toBinaryString(wartoscKwantyzacji-1).length() == 1)
-			return "000"+Integer.toBinaryString(wartoscKwantyzacji-1);
-		else
-			return Integer.toBinaryString(wartoscKwantyzacji-1);
+            switch (Integer.toBinaryString(wartoscKwantyzacji-1).length()) {
+                case 3:
+                    return "0"+Integer.toBinaryString(wartoscKwantyzacji-1);
+                case 2:
+                    return "00"+Integer.toBinaryString(wartoscKwantyzacji-1);
+                case 1:
+                    return "000"+Integer.toBinaryString(wartoscKwantyzacji-1);
+                default:
+                    return Integer.toBinaryString(wartoscKwantyzacji-1);
+            }
 			
 	}
 	
@@ -572,7 +633,7 @@ public class Amplituda {
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 
-
+//<editor-fold defaultstate="collapsed" desc="Śmietnik">
 // =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
 // =========================       ŚMIETNIK:      ===============================
 
@@ -620,3 +681,4 @@ public class Amplituda {
 			
 		}
 */
+//</editor-fold>
