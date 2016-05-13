@@ -18,26 +18,20 @@
 //</editor-fold>
 package mainPackage;
 
-import javax.swing.JFrame;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /**
  * @author Błażej Sewera (Jazz)
- * @version 0.5 (2016-05-13) - updates
+ * @version 1.0 (2016-05-13)
  */
-public class MainApplicationClass {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        
-        System.out.println("Starting application...");
-        ApplicationMainGUI gui = new ApplicationMainGUI();
-        
-        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        gui.setVisible(true);
-        System.out.println("Started application.");
-    }
+public interface Round {
     
+    static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
 }

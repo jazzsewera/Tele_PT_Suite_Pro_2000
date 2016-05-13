@@ -1,30 +1,34 @@
 //<editor-fold defaultstate="collapsed" desc="Copyright">
 /*
-* Copyright (C) 2016 jazz
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ * Copyright (C) 2016 Błażej Sewera (Jazz)
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 //</editor-fold>
 package mainPackage;
 
 /**
- *
- * @author jazz
+ * @author Błażej Sewera (Jazz)
+ * @version 0.5 (2016-05-13)
  */
 public class ApplicationMainGUI extends javax.swing.JFrame {
 
-    private static Amplituda amplituda;
+    private final Amplituda amplituda;
+    
+    {
+        amplituda = new Amplituda();
+    }
 
     /**
      * Creates new form ApplicationMainGUI
@@ -47,7 +51,7 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
         labelAmplituda0 = new javax.swing.JLabel();
         labelMaxAmplituda0 = new javax.swing.JLabel();
         textFieldAmplituda0 = new javax.swing.JTextField();
-        textFieldMaxAplituda0 = new javax.swing.JTextField();
+        textFieldMaxAmplituda0 = new javax.swing.JTextField();
         textFieldJednostkaAmplitudy0 = new javax.swing.JTextField();
         textFieldMaxJednostkaAmplitudy0 = new javax.swing.JTextField();
         labelJednostki0 = new javax.swing.JLabel();
@@ -96,13 +100,13 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
         labelMaxAmplituda0.setText("Amplituda Maksymalna");
 
         textFieldAmplituda0.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        textFieldAmplituda0.setText("0.0");
+        textFieldAmplituda0.setText("6.25");
         textFieldAmplituda0.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         textFieldAmplituda0.setMargin(new java.awt.Insets(2, 2, 2, 2));
 
-        textFieldMaxAplituda0.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        textFieldMaxAplituda0.setText("0.0");
-        textFieldMaxAplituda0.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        textFieldMaxAmplituda0.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        textFieldMaxAmplituda0.setText("12.5");
+        textFieldMaxAmplituda0.setMargin(new java.awt.Insets(2, 2, 2, 2));
 
         textFieldJednostkaAmplitudy0.setText("V");
         textFieldJednostkaAmplitudy0.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -116,14 +120,24 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
 
         textFieldWynik13Segmentowa.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         textFieldWynik13Segmentowa.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        textFieldWynik13Segmentowa.setText("00000000");
+        textFieldWynik13Segmentowa.setText("11101111");
         textFieldWynik13Segmentowa.setMargin(new java.awt.Insets(2, 2, 2, 2));
 
         sliderAmplituda0.setMinorTickSpacing(10);
         sliderAmplituda0.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        sliderAmplituda0.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderAmplituda0StateChanged(evt);
+            }
+        });
 
         sliderMaxAmplituda0.setMinorTickSpacing(10);
         sliderMaxAmplituda0.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        sliderMaxAmplituda0.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderMaxAmplituda0StateChanged(evt);
+            }
+        });
 
         labelWynik0.setText("Wynik:");
 
@@ -168,7 +182,7 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
                         .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(panel13SegmentowaLayout.createSequentialGroup()
                                 .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(textFieldMaxAplituda0)
+                                    .addComponent(textFieldMaxAmplituda0)
                                     .addComponent(textFieldAmplituda0, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -214,7 +228,7 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
                 .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelMaxAmplituda0)
-                        .addComponent(textFieldMaxAplituda0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textFieldMaxAmplituda0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(textFieldMaxJednostkaAmplitudy0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(labelJednostki1))
                     .addComponent(sliderMaxAmplituda0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -413,13 +427,12 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonWystrzal13SegmentowaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWystrzal13SegmentowaActionPerformed
-        // TODO add your handling code here: << TODO TODO TODO                                   TODO!!!!!!!!!!!!!!!!!!!!
-        amplituda = new Amplituda();
+
         double amplit = 0;
         double maxAmplit = 0;
         try {
             amplit = Double.parseDouble(textFieldAmplituda0.getText());
-            maxAmplit = Double.parseDouble(textFieldMaxAplituda0.getText());
+            maxAmplit = Double.parseDouble(textFieldMaxAmplituda0.getText());
         } catch (IllegalArgumentException | NullPointerException e) {
             System.out.println("Error in parsing double!"); //TODO Error handling
         }
@@ -427,12 +440,36 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
         amplituda.setAmplituda(amplit, textFieldJednostkaAmplitudy0.getText());
         amplituda.setMaxAmplituda(maxAmplit, textFieldMaxJednostkaAmplitudy0.getText());
         textAreaPosrednie13Segmentowa.setText("");
-        textAreaPosrednie13Segmentowa.append("Segment: ".concat(amplituda.segmentowaPrzypiszSegment().toString()).concat("\n"));
-        textAreaPosrednie13Segmentowa.append("Binarna reprezentacja segm.: ".concat(amplituda.segmentowaPrzypiszSegmentBinarnie()).concat("\n"));
-        textAreaPosrednie13Segmentowa.append("Pozostałe 4 bity: ".concat(amplituda.segmentowaGenerujPozostale4Bity()).concat("\n"));
+        textAreaPosrednie13Segmentowa.append("Segment:  ".concat(amplituda.segmentowaPrzypiszSegment().toString()).concat("\n"));
+        textAreaPosrednie13Segmentowa.append("Segm. binarnie:  ".concat(amplituda.segmentowaPrzypiszSegmentBinarnie()).concat("\n"));
+        textAreaPosrednie13Segmentowa.append("Pozostałe 4 bity:  ".concat(amplituda.segmentowaGenerujPozostale4Bity()).concat("\n"));
         
         textFieldWynik13Segmentowa.setText(amplituda.segmentowaWyswietlKod());
+        
+        listSegmenty13Segmentowa.setSelectedIndex(amplituda.segmentowaPrzypiszSegment().ordinal());
     }//GEN-LAST:event_buttonWystrzal13SegmentowaActionPerformed
+
+    private void sliderAmplituda0StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderAmplituda0StateChanged
+        
+        double a, b;
+        a = 0;
+        try {
+            a = Double.parseDouble(textFieldMaxAmplituda0.getText());
+        } catch (IllegalArgumentException | NullPointerException e) {
+            System.out.println("Error in parsing double!");
+        }
+        b = sliderAmplituda0.getValue() / 100.0 * a;
+        textFieldAmplituda0.setText(String.valueOf(Round.round(b, 2)));
+    }//GEN-LAST:event_sliderAmplituda0StateChanged
+
+    private void sliderMaxAmplituda0StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderMaxAmplituda0StateChanged
+
+        double a, b;
+        a = sliderMaxAmplituda0.getValue() * 0.25;
+        textFieldMaxAmplituda0.setText(String.valueOf(Round.round(a, 2)));
+        b = sliderAmplituda0.getValue() / 100.0 * a;
+        textFieldAmplituda0.setText(String.valueOf(Round.round(b, 2)));
+    }//GEN-LAST:event_sliderMaxAmplituda0StateChanged
 
     /**
      * @param args the command line arguments
@@ -455,8 +492,7 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
         }
         //</editor-fold>
         
-        amplituda = new Amplituda(0, 0, "V", "V");
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new ApplicationMainGUI().setVisible(true);
@@ -500,8 +536,8 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
     private javax.swing.JTextField textFieldAmplituda1;
     private javax.swing.JTextField textFieldJednostkaAmplitudy0;
     private javax.swing.JTextField textFieldJednostkaAmplitudy1;
+    private javax.swing.JTextField textFieldMaxAmplituda0;
     private javax.swing.JTextField textFieldMaxAmplituda1;
-    private javax.swing.JTextField textFieldMaxAplituda0;
     private javax.swing.JTextField textFieldMaxJednostkaAmplitudy0;
     private javax.swing.JTextField textFieldMaxJednostkaAmplitudy1;
     private javax.swing.JTextField textFieldWynik12Bitowy;

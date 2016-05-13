@@ -1,27 +1,27 @@
 //<editor-fold defaultstate="collapsed" desc="Copyright">
 /*
-* Copyright (C) 2016 jazz
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ * Copyright (C) 2016 Błażej Sewera (Jazz)
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 //</editor-fold>
 package mainPackage;
 
 /**
  * <blockquote>Labores pariunt honores</blockquote>
  * @author Błażej Sewera (Jazz)
- * @version 0.9 Beta (2016-04-15) - needs testing
+ * @version 1.3 (2016-05-13) - updates
  */
 public class Amplituda {
 	
@@ -36,7 +36,7 @@ public class Amplituda {
 	 * Jest jeszcze dodana wartość Overshoot, gdy amplituda jest > maxAmplituda.
 	 * 
 	 */
-	static enum Segmenty13Segmentowa {
+	protected static enum Segmenty13Segmentowa {
 		Segment1("Segment 1"),
 		Segment2("Segment 2"),
 		Segment3("Segment 3"),
@@ -66,7 +66,7 @@ public class Amplituda {
 	 * Jest jeszcze dodana wartość Overshoot, gdy amplituda jest > maxAmplituda.
 	 * 
 	 */
-	static enum SegmentyCyfrowa {
+	protected static enum SegmentyCyfrowa {
 		Segment1a("Segment 1a"),
 		Segment1b("Segment 1b"),
 		Segment2("Segment 2"),
@@ -278,7 +278,7 @@ public class Amplituda {
 	 * Wspólna metoda dla cyfrowej i 13 segmentowej
 	 * @return True, gdy amplituda jest >= 0 lub false, gdy jest < 0.
 	 */
-	public boolean czyDodatniaAmplituda() {
+	protected boolean czyDodatniaAmplituda() {
             return amplituda >= 0;
 	}
 	
@@ -290,7 +290,7 @@ public class Amplituda {
 	 * <code>ampl.segmentowaPrzypiszSegment();</code>
 	 * @return element z enum Segmenty13Segmentowa
 	 */
-	public Segmenty13Segmentowa segmentowaPrzypiszSegment() {
+	protected Segmenty13Segmentowa segmentowaPrzypiszSegment() {
 		
 		if (amplitudaAbs > maxAmplituda/2 && amplitudaAbs <= maxAmplituda) return Segmenty13Segmentowa.Segment1;
 		else if (amplitudaAbs > maxAmplituda/4 && amplitudaAbs <= maxAmplituda/2) return Segmenty13Segmentowa.Segment2;
@@ -311,7 +311,7 @@ public class Amplituda {
 	 * <code>ampl.segmentowaPrzypiszSegmentBinarnie();</code>
 	 * @return String "***", gdzie * oznacza 0 lub 1
 	 */
-	public String segmentowaPrzypiszSegmentBinarnie() {
+	protected String segmentowaPrzypiszSegmentBinarnie() {
 		if (segmentowaPrzypiszSegment() == Segmenty13Segmentowa.Overshoot) return " Overshoot ";
 		String bin;
 		bin = Integer.toBinaryString(7 - segmentowaPrzypiszSegment().ordinal());
@@ -330,13 +330,15 @@ public class Amplituda {
 	 * <code>ampl.segmentowaGenerujPozostale4Bity();</code>
 	 * @return String "****", gdzie * oznacza 0 lub 1
 	 */
-	public String segmentowaGenerujPozostale4Bity() {
+	protected String segmentowaGenerujPozostale4Bity() {
 		
 		int nrSegmentu = segmentowaPrzypiszSegment().ordinal() + 1;
 		double amplitudaWzglKwantyzacji = 0.0;
 		int wartoscKwantyzacji = 0;
 		double amplitudaWzgl;
 		double przedzialKwantyzacji;
+                
+                if (amplitudaAbs == 0.0) return "0000";
 		
 		switch( nrSegmentu ) {
 			case 1:
@@ -438,6 +440,7 @@ public class Amplituda {
 	 * </ol>
 	 * <b>Na samym końcu skleca się to wszystko w kupę przez metodę segmentowaWyswietlKod()</b>
 	 * 
+	 * @return Kod z segmentowej String, np.: "10100101"
 	 */
 	public String segmentowaWyswietlKod() {
 		if (czyDodatniaAmplituda())
@@ -458,7 +461,7 @@ public class Amplituda {
 	 * <code>ampl.cyfrowaGeneruj12Bitowy();</code>
 	 * @return String "************" gdzie * oznacza 0 lub 1
 	 */
-	public String cyfrowaGeneruj12Bitowy() {
+	protected String cyfrowaGeneruj12Bitowy() {
 		
 		double przedzialKwantyzacji = maxAmplituda / 2047;
 		
@@ -488,7 +491,7 @@ public class Amplituda {
 	 * <code>ampl.cyfrowaPrzypiszSegment();</code>
 	 * @return element z enum SegmentyCyfrowa
 	 */
-	public SegmentyCyfrowa cyfrowaPrzypiszSegment() {
+	protected SegmentyCyfrowa cyfrowaPrzypiszSegment() {
 		if (wartoscCyfrowejKwantyzacji > 1024 && wartoscCyfrowejKwantyzacji <= 2048) return SegmentyCyfrowa.Segment7;
 		else if (wartoscCyfrowejKwantyzacji > 512 && wartoscCyfrowejKwantyzacji <= 1024) return SegmentyCyfrowa.Segment6;
 		else if (wartoscCyfrowejKwantyzacji > 256 && wartoscCyfrowejKwantyzacji <= 512) return SegmentyCyfrowa.Segment5;
@@ -507,7 +510,7 @@ public class Amplituda {
 	 * <code>ampl.cyfrowaPrzypiszSegmentBinarnie();</code>
 	 * @return String "***" gdzie * oznacza 0 lub 1
 	 */
-	public String cyfrowaPrzypiszSegmentBinarnie() {
+	protected String cyfrowaPrzypiszSegmentBinarnie() {
 		if (cyfrowaPrzypiszSegment() == SegmentyCyfrowa.Overshoot) return " Overshoot ";
 		String bin;
 		bin = Integer.toBinaryString(cyfrowaPrzypiszSegment().ordinal());
@@ -526,9 +529,10 @@ public class Amplituda {
 	 * <code>ampl.cyfrowaPodajWXYZ(8);</code>
 	 * lub <br>
 	 * <code>ampl.cyfrowaPodajWXYZ(12);</code>
+	 * @param b - Wersja na 8 bitów (8), czy na 12 (12).
 	 * @return String o długości 12, np. "S001WXYZ****" lub 8, np. "S001WXYZ"
 	 */
-	public String cyfrowaPodajWXYZ(short b) {
+	protected String cyfrowaPodajWXYZ(short b) {
 		if (b == 8)
 			return "S" + cyfrowaPrzypiszSegmentBinarnie() + "WXYZ";
 		else {
@@ -562,7 +566,7 @@ public class Amplituda {
 	 * <code>ampl.cyfrowaGenerujPozostale4Bity();</code>
 	 * @return String "****" gdzie * oznacza 0 lub 1
 	 */
-	public String cyfrowaGenerujPozostale4Bity() {
+	protected String cyfrowaGenerujPozostale4Bity() {
 		char[] bitArray = cyfrowaGeneruj12Bitowy().toCharArray();
 		if (bitArray.length == 12) {
 			switch (cyfrowaPrzypiszSegment().ordinal()) {
@@ -601,6 +605,7 @@ public class Amplituda {
 	 * </ol>
 	 * <b>Na samym końcu skleca się to wszystko w kupę przez metodę cyfrowaaWyswietlKod()</b>
 	 * 
+	 * @return Kod 8 bitowy kompresji cyfrowej, String, np.: "10100101"
 	 */
 	public String cyfrowaWyswietlKod() {
 		if (czyDodatniaAmplituda())
