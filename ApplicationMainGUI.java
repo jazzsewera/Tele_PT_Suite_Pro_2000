@@ -256,12 +256,12 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
         panelCyfrowa.setBorder(javax.swing.BorderFactory.createTitledBorder("Kompresja cyfrowa (12b -> 8b)"));
 
         textFieldAmplituda1.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        textFieldAmplituda1.setText("0.0");
+        textFieldAmplituda1.setText("6.25");
         textFieldAmplituda1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         textFieldAmplituda1.setMargin(new java.awt.Insets(2, 2, 2, 2));
 
         textFieldMaxAmplituda1.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        textFieldMaxAmplituda1.setText("0.0");
+        textFieldMaxAmplituda1.setText("12.5");
         textFieldMaxAmplituda1.setMargin(new java.awt.Insets(2, 2, 2, 2));
 
         textFieldJednostkaAmplitudy1.setText("V");
@@ -272,8 +272,18 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
 
         sliderMaxAmplituda1.setMinorTickSpacing(10);
         sliderMaxAmplituda1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        sliderMaxAmplituda1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderMaxAmplituda1StateChanged(evt);
+            }
+        });
 
         buttonWystrzalCyfrowa.setText("Wystrzał");
+        buttonWystrzalCyfrowa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonWystrzalCyfrowaActionPerformed(evt);
+            }
+        });
 
         textAreaPosrednieCyfrowa.setColumns(20);
         textAreaPosrednieCyfrowa.setRows(5);
@@ -310,6 +320,11 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
 
         sliderAmplituda1.setMinorTickSpacing(10);
         sliderAmplituda1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        sliderAmplituda1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderAmplituda1StateChanged(evt);
+            }
+        });
 
         textFieldWynik12Bitowy.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         textFieldWynik12Bitowy.setText("000000000000");
@@ -434,7 +449,7 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
             amplit = Double.parseDouble(textFieldAmplituda0.getText());
             maxAmplit = Double.parseDouble(textFieldMaxAmplituda0.getText());
         } catch (IllegalArgumentException | NullPointerException e) {
-            System.out.println("Error in parsing double!"); //TODO Error handling
+            System.out.println("Error in parsing double (Segmentowa)!"); //TODO Error handling
         }
         
         amplituda.setAmplituda(amplit, textFieldJednostkaAmplitudy0.getText());
@@ -470,6 +485,63 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
         b = sliderAmplituda0.getValue() / 100.0 * a;
         textFieldAmplituda0.setText(String.valueOf(Round.round(b, 2)));
     }//GEN-LAST:event_sliderMaxAmplituda0StateChanged
+
+    private void buttonWystrzalCyfrowaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonWystrzalCyfrowaActionPerformed
+        
+        double amplit = 0;
+        double maxAmplit = 0;
+        try {
+            amplit = Double.parseDouble(textFieldAmplituda1.getText());
+            maxAmplit = Double.parseDouble(textFieldMaxAmplituda1.getText());
+        } catch (IllegalArgumentException | NullPointerException e) {
+            System.out.println("Error in parsing double (Cyfrowa)!"); //TODO Error handling
+        }
+        
+        amplituda.setMaxAmplituda(maxAmplit, textFieldMaxJednostkaAmplitudy1.getText());
+        amplituda.setAmplituda(amplit, textFieldJednostkaAmplitudy1.getText());
+        textAreaPosrednieCyfrowa.setText("");
+        textAreaPosrednieCyfrowa.append("Segment:  ".concat(amplituda.cyfrowaPrzypiszSegment().toString()).concat("\n"));
+        textAreaPosrednieCyfrowa.append("Segm. binarnie:  ".concat(amplituda.cyfrowaPrzypiszSegmentBinarnie()).concat("\n"));
+        textAreaPosrednieCyfrowa.append("Pozostałe 4 bity:  ".concat(amplituda.cyfrowaGenerujPozostale4Bity()).concat("\n"));
+        
+        textFieldWynik12Bitowy.setText(amplituda.cyfrowaGeneruj12Bitowy());
+        textFieldWynikCyfrowa.setText(amplituda.cyfrowaWyswietlKod());
+        
+        listSegmentyCyfrowa.setSelectedIndex(amplituda.cyfrowaPrzypiszSegment().ordinal());
+        
+        /*        System.out.print("Cyfrowa:\n\n"
+        .concat(String.valueOf(amplit)).concat(" = ").concat(String.valueOf(amplituda.getAmplituda())).concat("\n")
+        .concat(String.valueOf(maxAmplit)).concat(" = ").concat(String.valueOf(amplituda.getMaxAmplituda())).concat("\n")
+        .concat("Segment:  ".concat(amplituda.cyfrowaPrzypiszSegment().toString()).concat("\n"))
+        .concat("Segm. binarnie:  ".concat(amplituda.cyfrowaPrzypiszSegmentBinarnie()).concat("\n"))
+        .concat("Pozostałe 4 bity:  ".concat(amplituda.cyfrowaGenerujPozostale4Bity()).concat("\n"))
+        .concat("12 Bitowy:   ".concat(amplituda.cyfrowaGeneruj12Bitowy()).concat("\n"))
+        .concat("Wynik:   ".concat(amplituda.cyfrowaWyswietlKod()).concat("\n"))
+        .concat("----------------------".concat("\n"))
+        );*/
+    }//GEN-LAST:event_buttonWystrzalCyfrowaActionPerformed
+
+    private void sliderAmplituda1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderAmplituda1StateChanged
+        
+        double a, b;
+        a = 0;
+        try {
+            a = Double.parseDouble(textFieldMaxAmplituda1.getText());
+        } catch (IllegalArgumentException | NullPointerException e) {
+            System.out.println("Error in parsing double!");
+        }
+        b = sliderAmplituda1.getValue() / 100.0 * a;
+        textFieldAmplituda1.setText(String.valueOf(Round.round(b, 2)));
+    }//GEN-LAST:event_sliderAmplituda1StateChanged
+
+    private void sliderMaxAmplituda1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderMaxAmplituda1StateChanged
+
+        double a, b;
+        a = sliderMaxAmplituda1.getValue() * 0.25;
+        textFieldMaxAmplituda1.setText(String.valueOf(Round.round(a, 2)));
+        b = sliderAmplituda1.getValue() / 100.0 * a;
+        textFieldAmplituda1.setText(String.valueOf(Round.round(b, 2)));
+    }//GEN-LAST:event_sliderMaxAmplituda1StateChanged
 
     /**
      * @param args the command line arguments

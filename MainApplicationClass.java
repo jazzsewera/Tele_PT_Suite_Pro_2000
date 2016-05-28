@@ -18,11 +18,12 @@
 //</editor-fold>
 package mainPackage;
 
+//import java.util.Scanner; // Do debugowania
 import javax.swing.JFrame;
 
 /**
  * @author Błażej Sewera (Jazz)
- * @version 0.5 (2016-05-13) - updates
+ * @version 0.9 (2016-05-28) - added Cyfrowa functionality
  */
 public class MainApplicationClass {
 
@@ -38,6 +39,30 @@ public class MainApplicationClass {
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gui.setVisible(true);
         System.out.println("Started application.");
+        
+        //<editor-fold defaultstate="collapsed" desc="Śmietnik do debugowania">
+        /*        System.out.println("Strt.");
+        Scanner s = new Scanner(System.in);
+        System.out.println("1");
+        Amplituda amplituda = new Amplituda();
+        System.out.println("2");
+        amplituda.setAmplituda(5.6);
+        System.out.println("3");
+        amplituda.setMaxAmplituda(10);
+        System.out.println("4");
+        double ampl, maxAmpl;
+        System.out.println("5");
+        System.out.println("Start:");
+        for(int i = 0; i<3; i++) {
+        System.out.println("Podaj amplitude:");
+        ampl = s.nextDouble();
+        maxAmpl = s.nextDouble();
+        amplituda.setAmplituda(ampl);
+        amplituda.setMaxAmplituda(maxAmpl);
+        System.out.println(amplituda.getAmplitudaAbs());
+        System.out.println(amplituda.getWartoscCyfrowejKwantyzacji());
+        }*/
+        //</editor-fold>
     }
     
 }
