@@ -20,7 +20,7 @@ package mainPackage;
 
 /**
  * @author Błażej Sewera (Jazz)
- * @version 0.5 (2016-05-13)
+ * @version 0.9 (2016-06-28)
  */
 public class ApplicationMainGUI extends javax.swing.JFrame {
 
@@ -46,16 +46,18 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tab13Segmentowa = new javax.swing.JTabbedPane();
+        popupAddR = new javax.swing.JPopupMenu();
+        itemAddR0 = new javax.swing.JMenuItem();
+        itemAddR1 = new javax.swing.JMenuItem();
+        popupAddC = new javax.swing.JPopupMenu();
+        itemAddC0 = new javax.swing.JMenuItem();
+        itemAddC1 = new javax.swing.JMenuItem();
+        tabbedPaneMain = new javax.swing.JTabbedPane();
         panel13Segmentowa = new javax.swing.JPanel();
         labelAmplituda0 = new javax.swing.JLabel();
         labelMaxAmplituda0 = new javax.swing.JLabel();
         textFieldAmplituda0 = new javax.swing.JTextField();
         textFieldMaxAmplituda0 = new javax.swing.JTextField();
-        textFieldJednostkaAmplitudy0 = new javax.swing.JTextField();
-        textFieldMaxJednostkaAmplitudy0 = new javax.swing.JTextField();
-        labelJednostki0 = new javax.swing.JLabel();
-        labelJednostki1 = new javax.swing.JLabel();
         textFieldWynik13Segmentowa = new javax.swing.JTextField();
         sliderAmplituda0 = new javax.swing.JSlider();
         sliderMaxAmplituda0 = new javax.swing.JSlider();
@@ -70,17 +72,13 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
         panelCyfrowa = new javax.swing.JPanel();
         textFieldAmplituda1 = new javax.swing.JTextField();
         textFieldMaxAmplituda1 = new javax.swing.JTextField();
-        textFieldJednostkaAmplitudy1 = new javax.swing.JTextField();
-        textFieldMaxJednostkaAmplitudy1 = new javax.swing.JTextField();
         sliderMaxAmplituda1 = new javax.swing.JSlider();
         buttonWystrzalCyfrowa = new javax.swing.JButton();
         scrollPanePosrednieCyfrowa = new javax.swing.JScrollPane();
         textAreaPosrednieCyfrowa = new javax.swing.JTextArea();
         scrollPaneSegmentyCyfrowa = new javax.swing.JScrollPane();
         listSegmentyCyfrowa = new javax.swing.JList<>();
-        labelJednostki2 = new javax.swing.JLabel();
         labelWynik1 = new javax.swing.JLabel();
-        labelJednostki3 = new javax.swing.JLabel();
         labelPosrednie1 = new javax.swing.JLabel();
         labelSegment1 = new javax.swing.JLabel();
         labelAmplituda1 = new javax.swing.JLabel();
@@ -89,9 +87,35 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
         sliderAmplituda1 = new javax.swing.JSlider();
         textFieldWynik12Bitowy = new javax.swing.JTextField();
         labelWynik12Bitowy = new javax.swing.JLabel();
+        panelDC = new javax.swing.JPanel();
+        labelR0 = new javax.swing.JLabel();
+        textFieldR0 = new javax.swing.JTextField();
+        toggleSzereg0 = new javax.swing.JToggleButton();
+        buttonAddR = new javax.swing.JButton();
+        labelR1 = new javax.swing.JLabel();
+        textFieldR1 = new javax.swing.JTextField();
+        labelC0 = new javax.swing.JLabel();
+        labelC1 = new javax.swing.JLabel();
+        textFieldC0 = new javax.swing.JTextField();
+        textFieldC1 = new javax.swing.JTextField();
+        toggleSzereg1 = new javax.swing.JToggleButton();
+        buttonAddC = new javax.swing.JButton();
+
+        itemAddR0.setText("prosty");
+        popupAddR.add(itemAddR0);
+
+        itemAddR1.setText("zaawansowany");
+        popupAddR.add(itemAddR1);
+
+        itemAddC0.setText("prosty");
+        popupAddC.add(itemAddC0);
+
+        itemAddC1.setText("zaawansowany");
+        popupAddC.add(itemAddC1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tele PT Suite Pro 2000 Extended");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         panel13Segmentowa.setBorder(javax.swing.BorderFactory.createTitledBorder("Kompresja wg char. 13 segmentowej"));
 
@@ -108,17 +132,7 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
         textFieldMaxAmplituda0.setText("12.5");
         textFieldMaxAmplituda0.setMargin(new java.awt.Insets(2, 2, 2, 2));
 
-        textFieldJednostkaAmplitudy0.setText("V");
-        textFieldJednostkaAmplitudy0.setMargin(new java.awt.Insets(2, 2, 2, 2));
-
-        textFieldMaxJednostkaAmplitudy0.setText("V");
-        textFieldMaxJednostkaAmplitudy0.setMargin(new java.awt.Insets(2, 2, 2, 2));
-
-        labelJednostki0.setText("[V, mV]");
-
-        labelJednostki1.setText("[V, mV]");
-
-        textFieldWynik13Segmentowa.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        textFieldWynik13Segmentowa.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         textFieldWynik13Segmentowa.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         textFieldWynik13Segmentowa.setText("11101111");
         textFieldWynik13Segmentowa.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -179,38 +193,27 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
                             .addComponent(labelAmplituda0)
                             .addComponent(labelWynik0))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panel13SegmentowaLayout.createSequentialGroup()
-                                .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(textFieldMaxAmplituda0)
-                                    .addComponent(textFieldAmplituda0, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(textFieldMaxJednostkaAmplitudy0)
-                                    .addComponent(textFieldJednostkaAmplitudy0, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(textFieldWynik13Segmentowa, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textFieldWynik13Segmentowa, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(textFieldMaxAmplituda0, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                                .addComponent(textFieldAmplituda0, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addComponent(labelPosrednie0)
                     .addGroup(panel13SegmentowaLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(scrollPanePosrednie13Segmentowa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel13SegmentowaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panel13SegmentowaLayout.createSequentialGroup()
+                        .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonWystrzal13Segmentowa, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel13SegmentowaLayout.createSequentialGroup()
                                 .addComponent(labelSegment0)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(scrollPaneSegmenty13Segmentowa, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(buttonWystrzal13Segmentowa)))
-                    .addGroup(panel13SegmentowaLayout.createSequentialGroup()
-                        .addComponent(labelJednostki0)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sliderAmplituda0, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
-                    .addGroup(panel13SegmentowaLayout.createSequentialGroup()
-                        .addComponent(labelJednostki1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sliderMaxAmplituda0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(scrollPaneSegmenty13Segmentowa, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(sliderAmplituda0, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                    .addComponent(sliderMaxAmplituda0, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panel13SegmentowaLayout.setVerticalGroup(
@@ -220,38 +223,35 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
                 .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelAmplituda0)
-                        .addComponent(textFieldAmplituda0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(textFieldJednostkaAmplitudy0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(labelJednostki0))
+                        .addComponent(textFieldAmplituda0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(sliderAmplituda0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelMaxAmplituda0)
-                        .addComponent(textFieldMaxAmplituda0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(textFieldMaxJednostkaAmplitudy0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(labelJednostki1))
+                        .addComponent(textFieldMaxAmplituda0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(sliderMaxAmplituda0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldWynik13Segmentowa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelWynik0))
                 .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel13SegmentowaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelSegment0)
-                            .addComponent(scrollPaneSegmenty13Segmentowa, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                        .addComponent(buttonWystrzal13Segmentowa))
-                    .addGroup(panel13SegmentowaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(textFieldWynik13Segmentowa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelWynik0))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(labelPosrednie0)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(scrollPanePosrednie13Segmentowa, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(scrollPanePosrednie13Segmentowa, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel13SegmentowaLayout.createSequentialGroup()
+                        .addGap(0, 108, Short.MAX_VALUE)
+                        .addGroup(panel13SegmentowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(scrollPaneSegmenty13Segmentowa, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelSegment0))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonWystrzal13Segmentowa)))
                 .addGap(15, 15, 15))
         );
 
-        tab13Segmentowa.addTab("13 Segmentowa", panel13Segmentowa);
+        tabbedPaneMain.addTab("13 Segmentowa", panel13Segmentowa);
 
         panelCyfrowa.setBorder(javax.swing.BorderFactory.createTitledBorder("Kompresja cyfrowa (12b -> 8b)"));
 
@@ -263,12 +263,6 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
         textFieldMaxAmplituda1.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         textFieldMaxAmplituda1.setText("12.5");
         textFieldMaxAmplituda1.setMargin(new java.awt.Insets(2, 2, 2, 2));
-
-        textFieldJednostkaAmplitudy1.setText("V");
-        textFieldJednostkaAmplitudy1.setMargin(new java.awt.Insets(2, 2, 2, 2));
-
-        textFieldMaxJednostkaAmplitudy1.setText("V");
-        textFieldMaxJednostkaAmplitudy1.setMargin(new java.awt.Insets(2, 2, 2, 2));
 
         sliderMaxAmplituda1.setMinorTickSpacing(10);
         sliderMaxAmplituda1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -299,11 +293,7 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
         listSegmentyCyfrowa.setToolTipText("");
         scrollPaneSegmentyCyfrowa.setViewportView(listSegmentyCyfrowa);
 
-        labelJednostki2.setText("[V, mV]");
-
         labelWynik1.setText("Wynik:");
-
-        labelJednostki3.setText("[V, mV]");
 
         labelPosrednie1.setText("Wyniki pośrednie");
 
@@ -313,7 +303,7 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
 
         labelMaxAmplituda1.setText("Amplituda Maksymalna");
 
-        textFieldWynikCyfrowa.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        textFieldWynikCyfrowa.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         textFieldWynikCyfrowa.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         textFieldWynikCyfrowa.setText("00000000");
         textFieldWynikCyfrowa.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -326,6 +316,7 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
             }
         });
 
+        textFieldWynik12Bitowy.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         textFieldWynik12Bitowy.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         textFieldWynik12Bitowy.setText("000000000000");
 
@@ -345,41 +336,29 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
                             .addComponent(labelWynik1)
                             .addComponent(labelWynik12Bitowy))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelCyfrowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(textFieldWynik12Bitowy, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelCyfrowaLayout.createSequentialGroup()
-                                .addGroup(panelCyfrowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(textFieldAmplituda1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textFieldMaxAmplituda1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panelCyfrowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(textFieldJednostkaAmplitudy1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textFieldMaxJednostkaAmplitudy1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(textFieldWynikCyfrowa, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addGroup(panelCyfrowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelCyfrowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(textFieldWynik12Bitowy, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(panelCyfrowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(textFieldMaxAmplituda1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+                                    .addComponent(textFieldAmplituda1, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addComponent(textFieldWynikCyfrowa, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelCyfrowaLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(scrollPanePosrednieCyfrowa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(labelPosrednie1))
+                .addGap(18, 18, 18)
                 .addGroup(panelCyfrowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCyfrowaLayout.createSequentialGroup()
-                        .addGap(213, 213, 213)
-                        .addComponent(buttonWystrzalCyfrowa))
-                    .addGroup(panelCyfrowaLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(panelCyfrowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelCyfrowaLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(buttonWystrzalCyfrowa, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCyfrowaLayout.createSequentialGroup()
                                 .addComponent(labelSegment1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(scrollPaneSegmentyCyfrowa, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelCyfrowaLayout.createSequentialGroup()
-                                .addComponent(labelJednostki2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(sliderAmplituda1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(panelCyfrowaLayout.createSequentialGroup()
-                                .addComponent(labelJednostki3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(sliderMaxAmplituda1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(scrollPaneSegmentyCyfrowa, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(sliderAmplituda1, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                    .addComponent(sliderMaxAmplituda1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelCyfrowaLayout.setVerticalGroup(
@@ -389,53 +368,159 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
                 .addGroup(panelCyfrowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelCyfrowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelAmplituda1)
-                        .addComponent(textFieldAmplituda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(textFieldJednostkaAmplitudy1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(labelJednostki2))
+                        .addComponent(textFieldAmplituda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(sliderAmplituda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelCyfrowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelCyfrowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelMaxAmplituda1)
-                        .addComponent(textFieldMaxAmplituda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(textFieldMaxJednostkaAmplitudy1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(labelJednostki3))
+                        .addComponent(textFieldMaxAmplituda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(sliderMaxAmplituda1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelCyfrowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldWynikCyfrowa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelWynik1))
                 .addGroup(panelCyfrowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelCyfrowaLayout.createSequentialGroup()
-                        .addComponent(scrollPaneSegmentyCyfrowa, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonWystrzalCyfrowa))
-                    .addGroup(panelCyfrowaLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panelCyfrowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelSegment1)
-                            .addGroup(panelCyfrowaLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(panelCyfrowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(textFieldWynik12Bitowy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelWynik12Bitowy))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textFieldWynikCyfrowa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelWynik1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelCyfrowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(textFieldWynik12Bitowy, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelWynik12Bitowy))
+                        .addGap(18, 80, Short.MAX_VALUE)
                         .addComponent(labelPosrednie1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(scrollPanePosrednieCyfrowa, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(scrollPanePosrednieCyfrowa, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCyfrowaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(panelCyfrowaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(scrollPaneSegmentyCyfrowa, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelSegment1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonWystrzalCyfrowa)))
                 .addGap(15, 15, 15))
         );
 
-        tab13Segmentowa.addTab("Cyfrowa", panelCyfrowa);
+        tabbedPaneMain.addTab("Cyfrowa", panelCyfrowa);
+
+        labelR0.setText("R0:");
+
+        textFieldR0.setToolTipText("");
+
+        toggleSzereg0.setText("szeregowo");
+        toggleSzereg0.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                toggleSzereg0ItemStateChanged(evt);
+            }
+        });
+
+        buttonAddR.setText("+");
+        buttonAddR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAddRActionPerformed(evt);
+            }
+        });
+
+        labelR1.setText("R1:");
+
+        textFieldR1.setToolTipText("");
+
+        labelC0.setText("C0:");
+
+        labelC1.setText("C1:");
+
+        textFieldC0.setToolTipText("");
+
+        textFieldC1.setToolTipText("");
+
+        toggleSzereg1.setText("szeregowo");
+        toggleSzereg1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                toggleSzereg1ItemStateChanged(evt);
+            }
+        });
+
+        buttonAddC.setText("+");
+        buttonAddC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAddCActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelDCLayout = new javax.swing.GroupLayout(panelDC);
+        panelDC.setLayout(panelDCLayout);
+        panelDCLayout.setHorizontalGroup(
+            panelDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDCLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDCLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(buttonAddR))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDCLayout.createSequentialGroup()
+                        .addGroup(panelDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelR0)
+                            .addGroup(panelDCLayout.createSequentialGroup()
+                                .addComponent(textFieldR0, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(toggleSzereg0, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelC0)
+                            .addGroup(panelDCLayout.createSequentialGroup()
+                                .addComponent(textFieldC0, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(toggleSzereg1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelDCLayout.createSequentialGroup()
+                                .addComponent(labelC1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 361, Short.MAX_VALUE)
+                                .addComponent(buttonAddC))
+                            .addGroup(panelDCLayout.createSequentialGroup()
+                                .addGroup(panelDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textFieldR1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelR1)
+                                    .addComponent(textFieldC1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        panelDCLayout.setVerticalGroup(
+            panelDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDCLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(buttonAddR)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelR0)
+                    .addComponent(labelR1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textFieldR0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldR1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(toggleSzereg0))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                .addComponent(buttonAddC)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelC0)
+                    .addComponent(labelC1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textFieldC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldC0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(toggleSzereg1))
+                .addContainerGap(122, Short.MAX_VALUE))
+        );
+
+        tabbedPaneMain.addTab("Obwód prądu stałego", panelDC);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tab13Segmentowa)
+            .addComponent(tabbedPaneMain)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tab13Segmentowa)
+            .addComponent(tabbedPaneMain)
         );
 
         pack();
@@ -452,8 +537,8 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
             System.out.println("Error in parsing double (Segmentowa)!"); //TODO Error handling
         }
         
-        amplituda.setAmplituda(amplit, textFieldJednostkaAmplitudy0.getText());
-        amplituda.setMaxAmplituda(maxAmplit, textFieldMaxJednostkaAmplitudy0.getText());
+        amplituda.setAmplituda(amplit, "V");
+        amplituda.setMaxAmplituda(maxAmplit, "V");
         textAreaPosrednie13Segmentowa.setText("");
         textAreaPosrednie13Segmentowa.append("Segment:  ".concat(amplituda.segmentowaPrzypiszSegment().toString()).concat("\n"));
         textAreaPosrednie13Segmentowa.append("Segm. binarnie:  ".concat(amplituda.segmentowaPrzypiszSegmentBinarnie()).concat("\n"));
@@ -497,8 +582,8 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
             System.out.println("Error in parsing double (Cyfrowa)!"); //TODO Error handling
         }
         
-        amplituda.setMaxAmplituda(maxAmplit, textFieldMaxJednostkaAmplitudy1.getText());
-        amplituda.setAmplituda(amplit, textFieldJednostkaAmplitudy1.getText());
+        amplituda.setMaxAmplituda(maxAmplit, "V");
+        amplituda.setAmplituda(amplit, "V");
         textAreaPosrednieCyfrowa.setText("");
         textAreaPosrednieCyfrowa.append("Segment:  ".concat(amplituda.cyfrowaPrzypiszSegment().toString()).concat("\n"));
         textAreaPosrednieCyfrowa.append("Segm. binarnie:  ".concat(amplituda.cyfrowaPrzypiszSegmentBinarnie()).concat("\n"));
@@ -543,47 +628,78 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
         textFieldAmplituda1.setText(String.valueOf(Round.round(b, 2)));
     }//GEN-LAST:event_sliderMaxAmplituda1StateChanged
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ApplicationMainGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void toggleSzereg0ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_toggleSzereg0ItemStateChanged
+        if (toggleSzereg0.getText().equals("szeregowo"))
+            toggleSzereg0.setText("równolegle");
+        else
+            toggleSzereg0.setText("szeregowo");
+    }//GEN-LAST:event_toggleSzereg0ItemStateChanged
+
+    private void toggleSzereg1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_toggleSzereg1ItemStateChanged
+        if (toggleSzereg1.getText().equals("szeregowo"))
+            toggleSzereg1.setText("równolegle");
+        else
+            toggleSzereg1.setText("szeregowo");
+    }//GEN-LAST:event_toggleSzereg1ItemStateChanged
+
+    private void buttonAddRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddRActionPerformed
         
+        popupAddR.show(this, buttonAddR.getX(), buttonAddR.getY());
+    }//GEN-LAST:event_buttonAddRActionPerformed
+
+    private void buttonAddCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddCActionPerformed
         
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new ApplicationMainGUI().setVisible(true);
-        });
-    }
+        popupAddC.show(this, buttonAddC.getX(), buttonAddC.getY());
+    }//GEN-LAST:event_buttonAddCActionPerformed
+
+
+//<editor-fold defaultstate="collapsed" desc="Main (commented)">
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(ApplicationMainGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(() -> {
+//            new ApplicationMainGUI().setVisible(true);
+//        });
+//    }
+//</editor-fold>
+
 //<editor-fold defaultstate="collapsed" desc="Variables">
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAddC;
+    private javax.swing.JButton buttonAddR;
     private javax.swing.JButton buttonWystrzal13Segmentowa;
     private javax.swing.JButton buttonWystrzalCyfrowa;
+    private javax.swing.JMenuItem itemAddC0;
+    private javax.swing.JMenuItem itemAddC1;
+    private javax.swing.JMenuItem itemAddR0;
+    private javax.swing.JMenuItem itemAddR1;
     private javax.swing.JLabel labelAmplituda0;
     private javax.swing.JLabel labelAmplituda1;
-    private javax.swing.JLabel labelJednostki0;
-    private javax.swing.JLabel labelJednostki1;
-    private javax.swing.JLabel labelJednostki2;
-    private javax.swing.JLabel labelJednostki3;
+    private javax.swing.JLabel labelC0;
+    private javax.swing.JLabel labelC1;
     private javax.swing.JLabel labelMaxAmplituda0;
     private javax.swing.JLabel labelMaxAmplituda1;
     private javax.swing.JLabel labelPosrednie0;
     private javax.swing.JLabel labelPosrednie1;
+    private javax.swing.JLabel labelR0;
+    private javax.swing.JLabel labelR1;
     private javax.swing.JLabel labelSegment0;
     private javax.swing.JLabel labelSegment1;
     private javax.swing.JLabel labelWynik0;
@@ -593,6 +709,9 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
     private javax.swing.JList<String> listSegmentyCyfrowa;
     private javax.swing.JPanel panel13Segmentowa;
     private javax.swing.JPanel panelCyfrowa;
+    private javax.swing.JPanel panelDC;
+    private javax.swing.JPopupMenu popupAddC;
+    private javax.swing.JPopupMenu popupAddR;
     private javax.swing.JScrollPane scrollPanePosrednie13Segmentowa;
     private javax.swing.JScrollPane scrollPanePosrednieCyfrowa;
     private javax.swing.JScrollPane scrollPaneSegmenty13Segmentowa;
@@ -601,20 +720,22 @@ public class ApplicationMainGUI extends javax.swing.JFrame {
     private javax.swing.JSlider sliderAmplituda1;
     private javax.swing.JSlider sliderMaxAmplituda0;
     private javax.swing.JSlider sliderMaxAmplituda1;
-    private javax.swing.JTabbedPane tab13Segmentowa;
+    private javax.swing.JTabbedPane tabbedPaneMain;
     private javax.swing.JTextArea textAreaPosrednie13Segmentowa;
     private javax.swing.JTextArea textAreaPosrednieCyfrowa;
     private javax.swing.JTextField textFieldAmplituda0;
     private javax.swing.JTextField textFieldAmplituda1;
-    private javax.swing.JTextField textFieldJednostkaAmplitudy0;
-    private javax.swing.JTextField textFieldJednostkaAmplitudy1;
+    private javax.swing.JTextField textFieldC0;
+    private javax.swing.JTextField textFieldC1;
     private javax.swing.JTextField textFieldMaxAmplituda0;
     private javax.swing.JTextField textFieldMaxAmplituda1;
-    private javax.swing.JTextField textFieldMaxJednostkaAmplitudy0;
-    private javax.swing.JTextField textFieldMaxJednostkaAmplitudy1;
+    private javax.swing.JTextField textFieldR0;
+    private javax.swing.JTextField textFieldR1;
     private javax.swing.JTextField textFieldWynik12Bitowy;
     private javax.swing.JTextField textFieldWynik13Segmentowa;
     private javax.swing.JTextField textFieldWynikCyfrowa;
+    private javax.swing.JToggleButton toggleSzereg0;
+    private javax.swing.JToggleButton toggleSzereg1;
     // End of variables declaration//GEN-END:variables
 // </editor-fold>
 

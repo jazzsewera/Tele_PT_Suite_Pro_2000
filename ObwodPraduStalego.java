@@ -174,5 +174,16 @@ public class ObwodPraduStalego {
         return s;
     }
     
+    public String wyswietlKondensatory() {
+        String s = "Liczba kondensatorow: ";
+        
+        s = s.concat( String.valueOf(kondensatory.size()) ).concat(".\n");
+        
+        for(Kondensator c : kondensatory)
+            s = s.concat("C").concat( String.valueOf(c.getIdentyfikator()) ).concat(": ").concat( String.valueOf(c.getPojemnosc() * 1e6) ).concat(" mikroF\n");
+        
+        return s;
+    }
+    
     // Koniec metod;
 }

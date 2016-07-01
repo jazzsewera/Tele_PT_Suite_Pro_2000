@@ -206,7 +206,7 @@ public class Amplituda {
      * @param maxJednostka
      */
     public void setMaxAmplituda(double maxAmplituda, String maxJednostka) {
-	if (null != maxJednostka)
+	if (maxJednostka != null)
 	    switch (maxJednostka) {
 	    case "V":
 		this.maxAmplituda = maxAmplituda;

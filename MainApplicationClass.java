@@ -19,19 +19,27 @@
 package mainPackage;
 
 //import java.util.Scanner; // Do debugowania
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  * @author Błażej Sewera (Jazz)
  * @version 0.9 (2016-05-28) - added Cyfrowa functionality
  */
 public class MainApplicationClass {
-
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
+            Logger.getLogger(MainApplicationClass.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException exception) {
+            System.out.println("Nieobslugiwany Look and Feel");
+        }
         
         System.out.println("Starting application...");
         ApplicationMainGUI gui = new ApplicationMainGUI();

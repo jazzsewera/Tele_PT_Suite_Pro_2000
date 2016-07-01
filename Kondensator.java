@@ -27,12 +27,12 @@ public class Kondensator {
     // Pola:
     private int identyfikator;
     private static int id0;
-    private double pojemnosc;
-    private double poleOkladzin;
-    private double odlegloscMiedzyOkladzinami;
-    private double bezwzglednaPrzenikalnoscElektryczna;
-    private double wzglednaPrzenikalnoscElektryczna;
-    public static final double EPSILON0 = 8.85e-12;
+    private double pojemnosc; // [F]
+    private double poleOkladzin; // [m^2]
+    private double odlegloscMiedzyOkladzinami; // [m]
+    private double bezwzglednaPrzenikalnoscElektryczna; // [F/m]
+    private double wzglednaPrzenikalnoscElektryczna; // []
+    public static final double EPSILON0 = 8.85e-12; // [F/m]
     // Koniec pol;
     
     // Inicjalizacja:
